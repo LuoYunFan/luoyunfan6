@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.luoyunfan.dao.IAdminDao">
+	<resultMap id="adminMap" type="com.luoyunfan.entity.Admin">
+		<id column="userName" property="userName" jdbcType="VARCHAR" />
+
+		<!-- jdbcType和javaType只是用于在ResultMapping中选择类型处理器，如果不设置这两个参数，也会推导出对应的 jdbcType和javaType -->
+		<result column="passWord" property="passWord" jdbcType="VARCHAR" />
+
+	</resultMap>
+	<select id="findAdmin" resultMap="adminMap">
+		select * from admin where
+		userName = #{userName}
+	</select>
+	
+</mapper>
